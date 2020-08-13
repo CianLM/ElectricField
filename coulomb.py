@@ -37,7 +37,7 @@ def electric_field(charges,x,y):
 
 #electric_field([charge(3,0.07,0.07), charge(-3,0.07,-0.07)],0,0)
 
-user_input = int(input("How many charges do you have: "))
+user_input = int(input("Hi! How many charges do you have: "))
 charges = zeros((user_input,3),dtype='object')
 
 i=0
