@@ -1,6 +1,6 @@
 let canvas = document.getElementById("canvas")
 let ctx = canvas.getContext("2d")
-let k = 1e5//1000
+let k = 1e5
 window.onload = window.onresize = function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

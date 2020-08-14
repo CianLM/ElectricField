@@ -75,10 +75,10 @@ function coulombs(x,y) {
 }
 
 function heatmap(length) {
-    let c = 1
-    let r = c*255*Math.E**(-30*(length-0.75)**2)*0.18
-    let g = c*255*0.025*Math.E**(3.7*length)-0.011
-    let b = c*255*0.1*Math.E**(2.3*length)
+    length = length/10
+    let r = 255*Math.E**(-30*(length-0.75)**2)*0.18
+    let g = 255*0.025*Math.E**(3.7*length)-0.011
+    let b = 255*0.1*Math.E**(2.3*length)
     return `rgb(${r},${g},${b})`
 }
 // {
