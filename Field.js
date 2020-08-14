@@ -24,7 +24,11 @@ class Particle {
     }
 }
 
-charges = [new Particle(canvas.width/2,canvas.height/2,1,50),new Particle(canvas.width/4,canvas.height/2,-1,50),new Particle(canvas.width*3/4,canvas.height/2,-1,50)]
+charges = [
+    new Particle(canvas.width/2,canvas.height/2,1,50)//,
+    // new Particle(canvas.width/4,canvas.height/2,-1,50),
+    // new Particle(canvas.width*3/4,canvas.height/2,-1,50)
+]
 
 function fieldVectors(inc) {
     for (let i = 0; i < canvas.width/inc; i++) {

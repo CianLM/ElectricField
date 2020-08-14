@@ -48,7 +48,7 @@ canvas.addEventListener('mouseup', function(e) {
 function arrow(x,y,angle,length) {
     ctx.beginPath()
     //cl = 50;ctx.strokeStyle = "#"+parseInt(0xff*Math.abs(length)/cl).toString(16)+parseInt(0xc0*Math.abs(length)/cl).toString(16)+parseInt(0xcb*Math.abs(length)/cl).toString(16)
-    ctx.strokeStyle="blue" //red, blue, pink, yellow, magenta, lightblue
+    ctx.strokeStyle = heatmap(length) //red, blue, pink, yellow, magenta, lightblue
     ctx.moveTo(x,y)
     head = {"x":x+Math.cos(angle)*length,"y":y+Math.sin(angle)*length}
     ctx.lineTo(head["x"],head["y"])
@@ -73,3 +73,18 @@ function coulombs(x,y) {
     }
     return [Math.hypot(E_x,E_y),Math.atan2(E_y,E_x)]
 }
+
+function heatmap(length) {
+    let c = 1
+    let r = c*255*Math.E**(-30*(length-0.75)**2)*0.18
+    let g = c*255*0.025*Math.E**(3.7*length)-0.011
+    let b = c*255*0.1*Math.E**(2.3*length)
+    return `rgb(${r},${g},${b})`
+}
+// {
+//     '0.0': 'rgb(0, 0, 0)',
+//     '0.6': 'rgb(24, 53, 103)',
+//     '0.75': 'rgb(46, 100, 158)',
+//     '0.9': 'rgb(23, 173, 203)',
+//     '1.0': 'rgb(0, 250, 250)'
+//   }
