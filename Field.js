@@ -1,11 +1,15 @@
 let canvas = document.getElementById("canvas")
 let ctx = canvas.getContext("2d")
 let k = 1e5
+let timestart = Date.now()
 window.onload = window.onresize = function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     fieldVectors(10)
     charges.forEach( (c) => c.draw())
+    timeload = Date.now()-timestart
+    console.log(timeload)
+    //squares()
   }
 
 class Particle {
@@ -24,10 +28,11 @@ class Particle {
     }
 }
 
-charges = [
-    new Particle(canvas.width/2,canvas.height/2,1,50)//,
-    // new Particle(canvas.width/4,canvas.height/2,-1,50),
-    // new Particle(canvas.width*3/4,canvas.height/2,-1,50)
+charges = [ new Particle(window.innerWidth/2,window.innerHeight/2,1,50)//, random inital charge //-Math.floor(Math.random()*3)
+    // new Particle(window.innerWidth/3,window.innerHeight/2,1,50),
+    // new Particle(window.innerWidth*2/3,window.innerHeight/2,1,50),
+    // new Particle(window.innerWidth/2,window.innerHeight/2 + window.innerWidth*1/6,-1,50),
+    // new Particle(window.innerWidth/2,window.innerHeight/2 - window.innerWidth*1/6,-1,50)
 ]
 
 function fieldVectors(inc) {
@@ -38,3 +43,16 @@ function fieldVectors(inc) {
         }
     }    
 } 
+
+function box(start_x,start_y,box_width,box_height,thickness,color) {
+ctx.beginPath()
+ctx.fillStyle = color
+ctx.fillRect(start_x,start_y,box_width,thickness)
+ctx.fillRect(start_x,start_y,thickness,box_height)
+ctx.fillRect(start_x,start_y+box_height-thickness,box_width,thickness)
+ctx.fillRect(start_x+box_width-thickness,start_y,thickness,box_height)
+ctx.closePath()
+}
+
+//     box(580,innerHeight/2-50,100,100,5,'white');
+// colors = [{pos:0,r:255,g:255,b:255},{pos:1,r:255,g:255,b:255}]; arrow(window.innerWidth/2,window.innerHeight/2,Math.PI,250)
